@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,6 +38,9 @@ public class LoginActivity extends AppCompatActivity {
 
         dbHelper = new UserDBHelper(this);
 
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
         // 👉 Xử lý checkbox hiển thị mật khẩu
         cbShowPasswordLogin.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
@@ -46,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
             etLoginPassword.setSelection(etLoginPassword.getText().length());
         });
 
+        // Ẩn hiện hint khi click chuột vào edittext
         etLoginUsername.setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus) {
                 etLoginUsername.setHint("");

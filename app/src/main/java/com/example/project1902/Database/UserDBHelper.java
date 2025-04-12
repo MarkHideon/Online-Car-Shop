@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
 
 public class UserDBHelper extends SQLiteOpenHelper {
-
     public static final String DATABASE_NAME = "UserDB.db";
     public static final int DATABASE_VERSION = 1;
 
@@ -28,7 +27,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
                 COLUMN_USERNAME + " TEXT, " +
                 COLUMN_PASSWORD + " TEXT)");
 
-        // Thêm tài khoản mẫu (Không dùng email nữa)
+        // Thêm tài khoản mẫu
         db.execSQL("INSERT INTO " + TABLE_USER +
                 " (" + COLUMN_USERNAME + ", " + COLUMN_PASSWORD + ") VALUES ('testuser', '123456')");
     }
